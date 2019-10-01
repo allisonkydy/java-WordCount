@@ -41,9 +41,36 @@ public class Main
     }
 
     // print out the key value pairs in the words hashmap
-    for (String word : wordsHashMap.keySet())
+    //   for (String word : wordsHashMap.keySet())
+    //   {
+    //     System.out.println("key: " + word + " value: " + wordsHashMap.get(word));
+    //   }
+    // }
+
+    // print the 50 most common words in the wordsHashMap along with their counts
+    for (int i = 0;  i < 50; i++)
     {
-      System.out.println("key: " + word + " value: " + wordsHashMap.get(word));
+      // find the most common word
+      String mostCommonWord = null;
+      // for each word in the hash map
+      for (String word : wordsHashMap.keySet())
+      {
+        // if the frequency of the current word is greater than that of the most common word
+        if (mostCommonWord == null || wordsHashMap.get(word) > wordsHashMap.get(mostCommonWord))
+        {
+          // reassign the most common word
+          mostCommonWord = word;
+        }
+      }
+      // print it
+      System.out.println((i + 1) + ": " + mostCommonWord + ", count: " + wordsHashMap.get(mostCommonWord));
+
+      // remove it
+      wordsHashMap.remove(mostCommonWord);
     }
+
+    // convert the hash map to an array list
+
+    // sort the array list
   }
 }
