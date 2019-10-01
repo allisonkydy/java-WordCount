@@ -61,26 +61,30 @@ public class Main
 
     // *** LOOP METHOD ***
 
+    // copy the wordsHashMap
+    HashMap<String, Integer> wordsHashMapCopy = new HashMap<String, Integer>();
+    wordsHashMapCopy.putAll(wordsHashMap);
+
     // print the 50 most common words in the wordsHashMap along with their counts
     for (int i = 0;  i < 50; i++)
     {
       // find the most common word
       String mostCommonWord = null;
       // for each word in the hash map
-      for (String word : wordsHashMap.keySet())
+      for (String word : wordsHashMapCopy.keySet())
       {
         // if the frequency of the current word is greater than that of the most common word
-        if (mostCommonWord == null || wordsHashMap.get(word) > wordsHashMap.get(mostCommonWord))
+        if (mostCommonWord == null || wordsHashMapCopy.get(word) > wordsHashMapCopy.get(mostCommonWord))
         {
           // reassign the most common word
           mostCommonWord = word;
         }
       }
       // print it
-      System.out.println((i + 1) + ": " + mostCommonWord + ", count: " + wordsHashMap.get(mostCommonWord));
+      System.out.println((i + 1) + ": " + mostCommonWord + ", count: " + wordsHashMapCopy.get(mostCommonWord));
 
       // remove it
-      wordsHashMap.remove(mostCommonWord);
+      wordsHashMapCopy.remove(mostCommonWord);
     }
   }
 }
