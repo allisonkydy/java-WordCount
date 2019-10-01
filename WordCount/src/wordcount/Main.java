@@ -36,35 +36,12 @@ public class Main
       wordsHashMap.put(word, wordsHashMap.get(word) + 1);
     }
     
-    // *** SORT METHOD ***
-
-    // convert the hash map to an array list
-    ArrayList<HashMap.Entry<String, Integer>> sortedWords = new ArrayList<HashMap.Entry<String, Integer>>();
-    sortedWords.addAll(wordsHashMap.entrySet());
-
-    // sort the array list
-    Collections.sort(sortedWords, new Comparator<HashMap.Entry<String, Integer>>()
-    {
-      public int compare(HashMap.Entry<String, Integer> word1, HashMap.Entry<String, Integer> word2)
-      {
-        return word2.getValue() - word1.getValue();
-      }
-    });
-
-    // print the sorted array list
-    for (int i = 0; i < 50; i++)
-    {
-      System.out.println((i + 1) + ": " + sortedWords.get(i).getKey() + ", count: " + sortedWords.get(i).getValue());
-    }
-
-    System.out.println();
-
     // *** LOOP METHOD ***
-
+    
     // copy the wordsHashMap
     HashMap<String, Integer> wordsHashMapCopy = new HashMap<String, Integer>();
     wordsHashMapCopy.putAll(wordsHashMap);
-
+    
     // print the 50 most common words in the wordsHashMap along with their counts
     for (int i = 0;  i < 50; i++)
     {
@@ -82,9 +59,58 @@ public class Main
       }
       // print it
       System.out.println((i + 1) + ": " + mostCommonWord + ", count: " + wordsHashMapCopy.get(mostCommonWord));
-
+      
       // remove it
       wordsHashMapCopy.remove(mostCommonWord);
+    }
+
+    System.out.println();
+    
+    // *** SORT METHOD ***
+
+    // convert the hash map to an array list
+    ArrayList<HashMap.Entry<String, Integer>> sortedWords = new ArrayList<HashMap.Entry<String, Integer>>();
+    sortedWords.addAll(wordsHashMap.entrySet());
+
+    // sort the array list
+    Collections.sort(sortedWords, new Comparator<HashMap.Entry<String, Integer>>()
+    {
+      public int compare(HashMap.Entry<String, Integer> word1, HashMap.Entry<String, Integer> word2)
+      {
+        return word2.getValue() - word1.getValue();
+      }
+    });
+
+    // for stretch -- create a new array list for the top 50 appearing words
+    ArrayList<HashMap.Entry<String, Integer>> sortedWordsAlpha = new ArrayList<HashMap.Entry<String, Integer>>();
+
+    // print the top 50 words from the sorted array list
+    for (int i = 0; i < 50; i++)
+    {
+      System.out.println((i + 1) + ": " + sortedWords.get(i).getKey() + ", count: " + sortedWords.get(i).getValue());
+
+      // add to sortedWordsAlpha
+      sortedWordsAlpha.add(sortedWords.get(i));
+    }
+
+    System.out.println();
+
+    // *** STRETCH ***
+    // Print the top 50 appearing words alphabetically, including their counts
+
+    // sort the sortedWords array list alphabetically
+    Collections.sort(sortedWordsAlpha, new Comparator<HashMap.Entry<String, Integer>>()
+    {
+      public int compare(HashMap.Entry<String, Integer> word1, HashMap.Entry<String, Integer> word2)
+      {
+        return word1.getKey().compareToIgnoreCase(word2.getKey());
+      }
+    });
+
+    // print the top 50 words sorted alphabetically
+    for (int i = 0; i < sortedWordsAlpha.size(); i++)
+    {
+      System.out.println((i + 1) + ": " + sortedWordsAlpha.get(i).getKey() + ", count: " + sortedWordsAlpha.get(i).getValue());
     }
   }
 }
