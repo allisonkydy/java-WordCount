@@ -14,8 +14,6 @@ public class Main
     // create an array of words out of the text
     String[] words = textSinPunct.split(" +");
 
-    // System.out.println(Arrays.toString(words));
-
     // make a hash map of each unique word and its frequency in the text
       // key -> word (string)
       // value -> frequency (int)
@@ -24,8 +22,6 @@ public class Main
     // for each word in the words array
     for (String word : words)
     {
-      // System.out.println(word);
-
       // make the word lowercase
       word = word.toLowerCase();
 
@@ -39,13 +35,6 @@ public class Main
       // add 1 to the word's frequency value
       wordsHashMap.put(word, wordsHashMap.get(word) + 1);
     }
-
-    // print out the key value pairs in the words hashmap
-    //   for (String word : wordsHashMap.keySet())
-    //   {
-    //     System.out.println("key: " + word + " value: " + wordsHashMap.get(word));
-    //   }
-    // }
 
     // print the 50 most common words in the wordsHashMap along with their counts
     for (int i = 0;  i < 50; i++)
