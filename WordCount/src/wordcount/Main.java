@@ -1,6 +1,6 @@
 package wordcount;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Main
 {
@@ -15,5 +15,35 @@ public class Main
     String[] words = textSinPunct.split(" +");
 
     // System.out.println(Arrays.toString(words));
+
+    // make a hash map of each unique word and its frequency in the text
+      // key -> word (string)
+      // value -> frequency (int)
+    HashMap<String, Integer> wordsHashMap = new HashMap<String, Integer>();
+
+    // for each word in the words array
+    for (String word : words)
+    {
+      // System.out.println(word);
+
+      // make the word lowercase
+      word = word.toLowerCase();
+
+      // if the word does not exist
+      if (!wordsHashMap.containsKey(word))
+      {
+        // add the word to the hash map
+        wordsHashMap.put(word, 0);
+      }
+
+      // add 1 to the word's frequency value
+      wordsHashMap.put(word, wordsHashMap.get(word) + 1);
+    }
+
+    // print out the key value pairs in the words hashmap
+    for (String word : wordsHashMap.keySet())
+    {
+      System.out.println("key: " + word + " value: " + wordsHashMap.get(word));
+    }
   }
 }
