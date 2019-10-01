@@ -35,6 +35,31 @@ public class Main
       // add 1 to the word's frequency value
       wordsHashMap.put(word, wordsHashMap.get(word) + 1);
     }
+    
+    // *** SORT METHOD ***
+
+    // convert the hash map to an array list
+    ArrayList<HashMap.Entry<String, Integer>> sortedWords = new ArrayList<HashMap.Entry<String, Integer>>();
+    sortedWords.addAll(wordsHashMap.entrySet());
+
+    // sort the array list
+    Collections.sort(sortedWords, new Comparator<HashMap.Entry<String, Integer>>()
+    {
+      public int compare(HashMap.Entry<String, Integer> word1, HashMap.Entry<String, Integer> word2)
+      {
+        return word2.getValue() - word1.getValue();
+      }
+    });
+
+    // print the sorted array list
+    for (int i = 0; i < 50; i++)
+    {
+      System.out.println((i + 1) + ": " + sortedWords.get(i).getKey() + ", count: " + sortedWords.get(i).getValue());
+    }
+
+    System.out.println();
+
+    // *** LOOP METHOD ***
 
     // print the 50 most common words in the wordsHashMap along with their counts
     for (int i = 0;  i < 50; i++)
@@ -57,9 +82,5 @@ public class Main
       // remove it
       wordsHashMap.remove(mostCommonWord);
     }
-
-    // convert the hash map to an array list
-
-    // sort the array list
   }
 }
